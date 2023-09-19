@@ -1,0 +1,28 @@
+﻿<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Detay";
+}
+
+
+<div class="row my-5 py-5">
+    <div class="col-md-4">
+        <img src="https://images.pexels.com/photos/3410287/pexels-photo-3410287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="resim" class="detay-img"/>
+    </div>
+    @foreach (var item in ViewBag.Book)
+    {
+        <div class="col-md-8 ps-5">
+            <h3 class="my-3">@item.BookName</h3><hr />
+            <p class="my-3 detay">@item.Author</p>
+            <p class="my-3 detay">@item.Type</p>
+            <p class="my-3 detay">@item.Page</p>
+            <div class="btn-group mt-5" role="group" aria-label="Basic outlined example">
+               @Html.ActionLink("Okudum", "Add", "Liste", new { id = item.ID, reading = true }, new { @class = "btn btn-outline-secondary" })
+               @Html.ActionLink("Listeye Ekle", "Add", "Liste", new { id = item.ID, reading = false }, new { @class = "btn btn-outline-secondary" })
+            </div>
+        </div>
+    }
+
+</div>
+
+

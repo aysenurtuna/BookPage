@@ -1,0 +1,42 @@
+﻿@model List<MVCproject.Models.Books>
+@{
+    ViewBag.Title = "Kategoriler";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+
+<div class="row my-5 py-5">
+    <h3>@ViewBag.Kategori</h3>
+    <div class="col-md-3 justify-content-center">
+        <ul class="list-group my-2">
+            @foreach (var type in ViewBag.Types)
+            {
+            <li class="list-group-item type-list list-group-item-action">
+
+                @Html.ActionLink((string)@type, "Kategoriler", "Home", new { type = (string)@type }, new { @class ="type-link"})
+                @*<a href="/Home/Kategoriler/@type" class="type-link">@type</a>*@
+            </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            @foreach (MVCproject.Models.Books item in ViewBag.Liste)
+            {
+                <div class="col my-2">
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://images.pexels.com/photos/3410287/pexels-photo-3410287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="kitap">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.BookName</h5>
+                            <p class="card-text">@item.Author</p>
+                            <p class="card-text">@item.Page</p>
+                            <a class="btn btn-secondary" href="/Home/Details/@item.ID">Kitap Detay</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        
+    </div>
+</div>

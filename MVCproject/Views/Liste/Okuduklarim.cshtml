@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Okuduklarim";
+}
+@{ Layout = null; }
+
+
+
+<div id="result2">
+    @Html.Action("ReadTrue", "Liste");
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    function DeleteBook(id) {
+        Swal.fire({
+            title: "Sil",
+            text: "Emin Misiniz?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet",
+            cancelButtonText: "Hayır"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                SelectedOption = "";
+                jQuery.ajax({
+                    type: "Post",
+                    url: "/Liste/Delete?ID=" + id,
+                    dataType: "json",
+                    data: { id: id },
+                    success: function (data) {
+                        if (!data.hasError) {
+                            Swal.fire({
+                                title: "Başarılı!",
+                                text: "Kitap Silindi",
+                                icon: "success",
+                                showCancelButton: false,
+                                confirmButtonColor: "#3085d6",
+                                confirmButtonText: "Tamam"
+                            });
+                            $.ajax({
+                                type: "Post",
+                                url: "/Liste/ReadTrue",
+                                dataType: 'html',
+                                success: function (data) {
+                                    //alert("İşlem Başarılı!..");
+                                    $("#result2").html(data);
+                                }
+                            })
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            title: 'Hata',
+                            text: 'Sistem Kaynaklı Bir Hata Oluştu.',
+                            icon: 'error', // 'success', 'error', 'warning', 'info' vb.
+                            confirmButtonText: 'Tamam'
+                        });
+                    }
+                });
+            };
+        });
+    }
+
+
+</script>
+

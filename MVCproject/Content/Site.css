@@ -1,0 +1,49 @@
+﻿body {
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+svg{
+    cursor:pointer;
+}
+.nav-item{
+    margin-left:20px;
+}
+.footer-title{
+    font-size:28px;
+    text-align:center;
+    margin:auto;
+}
+.nav-container{
+    display:flex;
+    justify-content:space-around;
+}
+.type-link{
+    text-decoration:none;
+    color:inherit;
+}
+.type-link:hover{
+    letter-spacing:1px;
+}
+img{
+    width:100%;
+    height:auto;
+}
+.detay-img{
+    width:75%;
+    height:auto;
+}
+.detay{
+    font-size:22px;
+}

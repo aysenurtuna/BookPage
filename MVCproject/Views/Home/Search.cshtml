@@ -1,0 +1,22 @@
+﻿@using MVCproject.Models
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<div class="row">
+        @foreach (var item in ViewBag.Search)
+        {
+            <div class="col my-5 mx-auto">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://images.pexels.com/photos/3410287/pexels-photo-3410287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="kitap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.BookName</h5>
+                        <p class="card-text">@item.Author</p>
+                        <p class="card-text">@item.Page</p>
+                        <a class="btn btn-secondary" href="/Home/Details/@item.ID">Kitap Detay</a>
+                    </div>
+                </div>
+            </div>
+        }
+</div>
