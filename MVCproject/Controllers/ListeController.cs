@@ -46,7 +46,7 @@ namespace MVCproject.Controllers
         public ActionResult Add(int id, bool reading)
         {
             var book = db.Books.Where(i => i.ID == id).FirstOrDefault();
-            var control = db.List.Any(i => i.ID == id);
+            var control = db.List.Any(i => i.BookName == book.BookName);
             if (control)
             {
                 ViewBag.Text = "Kitap zaten listenizde ekli!";
@@ -55,6 +55,7 @@ namespace MVCproject.Controllers
             else
             {
                 List list = new List();
+                list.ID = book.ID;
                 list.BookName = book.BookName;
                 list.Author = book.Author;
                 list.Page = (int)book.Page;
